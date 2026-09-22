@@ -42,27 +42,27 @@ export default async function ProjectPage({
       <RevealOnScroll>
         <Link
           href="/projects"
-          className="text-sm text-muted hover:text-brass transition-colors"
+          className="font-mono text-[11px] uppercase tracking-[0.15em] text-fg-muted hover:text-orange transition-colors"
         >
           ← All projects
         </Link>
 
         <div className="mt-8 flex items-baseline justify-between gap-6 flex-wrap">
-          <h1 className="font-serif text-4xl md:text-5xl text-paper">
+          <h1 className="font-display font-medium text-4xl md:text-5xl text-fg">
             {project.title}
           </h1>
-          <span className="font-mono text-sm text-muted">
+          <span className="font-mono text-sm text-fg-muted">
             {project.year}
           </span>
         </div>
 
-        <p className="mt-4 text-lg text-muted max-w-xl">{project.summary}</p>
+        <p className="mt-4 text-lg text-fg-muted max-w-xl">{project.summary}</p>
 
         <div className="mt-4 flex flex-wrap gap-x-3 gap-y-1">
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="text-xs uppercase tracking-wider text-brass"
+              className="font-mono text-[11px] uppercase tracking-[0.15em] text-orange"
             >
               {tag}
             </span>
@@ -76,7 +76,7 @@ export default async function ProjectPage({
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-brass hover:text-paper transition-colors"
+                className="font-mono text-[11px] uppercase tracking-[0.15em] text-orange hover:text-fg transition-colors"
               >
                 Visit →
               </a>
@@ -86,7 +86,7 @@ export default async function ProjectPage({
                 href={project.repo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-brass hover:text-paper transition-colors"
+                className="font-mono text-[11px] uppercase tracking-[0.15em] text-orange hover:text-fg transition-colors"
               >
                 Repository →
               </a>
@@ -95,7 +95,7 @@ export default async function ProjectPage({
         )}
 
         <div
-          className="prose-content mt-14 max-w-none text-paper/90 [&_p]:mb-5 [&_p]:leading-relaxed [&_a]:text-brass [&_a]:underline [&_a]:underline-offset-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_li]:mb-2 [&_strong]:text-paper"
+          className="prose-content mt-14 max-w-none text-fg/90 [&_p]:mb-5 [&_p]:leading-relaxed [&_a]:text-orange [&_a]:underline [&_a]:underline-offset-4 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:mb-5 [&_li]:mb-2 [&_strong]:text-fg"
           dangerouslySetInnerHTML={{ __html: html }}
         />
       </RevealOnScroll>

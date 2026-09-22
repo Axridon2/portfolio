@@ -6,12 +6,16 @@ export default function SectionHeading({
   title: string;
 }) {
   return (
-    <div className="flex items-baseline gap-4 md:gap-6 mb-12">
-      <span className="font-mono text-sm text-brass tracking-[0.2em]">
-        {number}
-      </span>
-      <h2 className="font-serif text-3xl md:text-5xl text-paper">{title}</h2>
-      <div className="hidden md:block flex-1 h-px bg-line" />
+    <div className="mb-12">
+      <div className="flex items-center gap-3 mb-4">
+        <span className="font-mono text-xs uppercase tracking-[0.2em] text-orange">
+          {number}
+        </span>
+        <div className="ticked-line flex-1 max-w-16" />
+      </div>
+      <h2 className="font-display font-medium text-3xl md:text-5xl text-fg">
+        {title}
+      </h2>
     </div>
   );
 }

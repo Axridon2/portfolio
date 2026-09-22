@@ -23,10 +23,10 @@ export default function ProjectsFilter({
       <div className="flex flex-wrap gap-3 mb-14">
         <button
           onClick={() => setActiveTag(null)}
-          className={`text-xs uppercase tracking-wider px-4 py-2 border transition-colors ${
+          className={`font-mono text-[11px] uppercase tracking-[0.15em] px-4 py-2 border transition-colors ${
             activeTag === null
-              ? "border-brass text-brass"
-              : "border-line text-muted hover:text-paper"
+              ? "border-orange text-orange"
+              : "border-line text-fg-muted hover:text-fg"
           }`}
         >
           All
@@ -35,10 +35,10 @@ export default function ProjectsFilter({
           <button
             key={tag}
             onClick={() => setActiveTag(tag)}
-            className={`text-xs uppercase tracking-wider px-4 py-2 border transition-colors ${
+            className={`font-mono text-[11px] uppercase tracking-[0.15em] px-4 py-2 border transition-colors ${
               activeTag === tag
-                ? "border-brass text-brass"
-                : "border-line text-muted hover:text-paper"
+                ? "border-orange text-orange"
+                : "border-line text-fg-muted hover:text-fg"
             }`}
           >
             {tag}
@@ -51,7 +51,9 @@ export default function ProjectsFilter({
           <ProjectCard key={project.slug} project={project} />
         ))}
         {filtered.length === 0 && (
-          <p className="text-muted py-10">No projects tagged “{activeTag}” yet.</p>
+          <p className="text-fg-muted py-10">
+            No projects tagged “{activeTag}” yet.
+          </p>
         )}
       </div>
     </div>

@@ -1,36 +1,183 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Space Grotesk Var";
+  src: url("/fonts/SpaceGrotesk-Variable.woff2") format("woff2");
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Var";
+  src: url("/fonts/Inter-Variable.woff2") format("woff2");
+  font-weight: 400 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Commit Mono";
+  src: url("/fonts/CommitMono-400-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Commit Mono";
+  src: url("/fonts/CommitMono-700-Regular.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
-  --color-ink: #0a0a0b;
-  --color-paper: #ededea;
-  --color-muted: #9c9891;
-  --color-brass: #c9a961;
-  --color-line: rgba(237, 237, 234, 0.1);
+  --color-bg: #000000;
+  --color-fg: #ffffff;
+  --color-fg-muted: #b8b8b8;
+  --color-line: #2c2c2c;
+  --color-raised: #121212;
+  --color-raised-line: #1f1f1f;
+  --color-interface-orange: #e32a01;
+  --color-fire: #ff3001;
+  --color-code-blue: #5696fd;
+  --color-code-green: #9dc20c;
+  --color-code-orange: #ff795b;
+  --color-code-purple: #b57cff;
+
+  --font-display: "Space Grotesk Var", ui-sans-serif, sans-serif;
+  --font-body: "Inter Var", ui-sans-serif, sans-serif;
+  --font-mono: "Commit Mono", ui-monospace, monospace;
 }
 
 @theme inline {
-  --color-ink: var(--color-ink);
-  --color-paper: var(--color-paper);
-  --color-muted: var(--color-muted);
-  --color-brass: var(--color-brass);
+  --color-bg: var(--color-bg);
+  --color-fg: var(--color-fg);
+  --color-fg-muted: var(--color-fg-muted);
   --color-line: var(--color-line);
-  --font-serif: var(--font-fraunces);
-  --font-sans: var(--font-inter);
+  --color-raised: var(--color-raised);
+  --color-raised-line: var(--color-raised-line);
+  --color-orange: var(--color-interface-orange);
+  --color-fire: var(--color-fire);
+  --color-code-blue: var(--color-code-blue);
+  --color-code-green: var(--color-code-green);
+  --color-code-orange: var(--color-code-orange);
+  --color-code-purple: var(--color-code-purple);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-mono: var(--font-mono);
 }
 
 html {
-  background: var(--color-ink);
+  background: var(--color-bg);
 }
 
 body {
-  background: var(--color-ink);
-  color: var(--color-paper);
-  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-body);
 }
 
 ::selection {
-  background: var(--color-brass);
-  color: var(--color-ink);
+  background: var(--color-interface-orange);
+  color: var(--color-fg);
+}
+
+/* ---- e2b-style background patterns ---- */
+
+.bg-dot-grid {
+  background-image: radial-gradient(#101010 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-hairline-grid {
+  background-image:
+    linear-gradient(to right, var(--color-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.ticked-line {
+  height: 2px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    var(--color-interface-orange) 0 8px,
+    transparent 8px 12px
+  );
+}
+
+.edge-fade {
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+/* ---- motion ---- */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 28s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-blink {
+    animation: none !important;
+  }
+}
+
+/* ---- prose (markdown project body) ---- */
+
+.prose-content code {
+  font-family: var(--font-mono);
+  color: var(--color-code-orange);
+  font-size: 0.875em;
+}
+
+.prose-content pre {
+  background: var(--color-raised);
+  border: 1px solid var(--color-raised-line);
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.5rem;
+}
+
+.prose-content pre code {
+  color: var(--color-fg-muted);
+}
+
+.prose-content strong {
+  color: var(--color-fg);
 }
 
 @media print {
