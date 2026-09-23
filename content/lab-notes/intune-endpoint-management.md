@@ -25,6 +25,16 @@ Baseline compliance rules (encryption, OS version, firewall state) are paired wi
 
 Microsoft 365 and line-of-business applications are packaged and pushed through Intune rather than installed manually per device. BitLocker is enforced by policy, and staged Windows Update rings roll patches out in waves instead of all at once.
 
+Checking a device's compliance state directly via Graph is often faster than opening the console:
+
+```powershell
+Connect-MgGraph -Scopes "DeviceManagementManagedDevices.Read.All"
+
+Get-MgDeviceManagementManagedDevice -Filter "operatingSystem eq 'Windows'" |
+    Where-Object { $_.ComplianceState -ne "compliant" } |
+    Select-Object DeviceName, ComplianceState, LastSyncDateTime
+```
+
 ## Result
 
 A small but complete picture of the modern endpoint stack — the same policies and profiles that kept a real fleet of laptops compliant and provisioned without manual intervention.

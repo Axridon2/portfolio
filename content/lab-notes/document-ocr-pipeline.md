@@ -16,3 +16,17 @@ The pipeline takes in raw audio and scanned documents and produces searchable, s
 ## Why containerised
 
 Running the pipeline as a container on a dedicated GPU node keeps it isolated from the rest of the cluster while still making full use of the hardware when a job comes in. Jobs queue in, the container spins up the model, and results land back on shared storage — no GPU sitting idle the rest of the time affecting other services.
+
+```yaml
+services:
+  ocr-pipeline:
+    image: ocr-pipeline:latest
+    runtime: nvidia
+    environment:
+      - WHISPER_MODEL=medium.en
+      - OCR_LANG=eng
+    volumes:
+      - /mnt/shared/inbox:/inbox
+      - /mnt/shared/output:/output
+    restart: unless-stopped
+```

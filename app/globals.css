@@ -173,7 +173,7 @@ body {
 }
 
 .prose-content pre code {
-  color: var(--color-fg-muted);
+  color: var(--color-code-blue);
 }
 
 .prose-content strong {

@@ -187,3 +187,15 @@ export function getAllBlogPosts(): BlogPost[] {
 export function getBlogPostBySlug(slug: string): BlogPost | undefined {
   return getAllBlogPosts().find((p) => p.slug === slug);
 }
+
+export function addHeadingIds(html: string): string {
+  return html.replace(/<h2>(.*?)<\/h2>/g, (_match, text: string) => {
+    const plain = text.replace(/<[^>]+>/g, "");
+    const slug = plain
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+    return `<h2 id="${slug}">${text}</h2>`;
+  });
+}

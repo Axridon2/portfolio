@@ -19,6 +19,20 @@ A single forest with a domain structure planned around realistic growth rather t
 - **Security groups and access permissions** — role-based groups controlling file share and resource access, following least-privilege rather than ad hoc grants.
 - **Delegated administration tiers** — tiered admin accounts and delegated OU control, mirroring a tiered-admin model rather than handing out Domain Admin by default.
 
+Bulk provisioning from a CSV, rather than one account at a time:
+
+```powershell
+Import-Csv .\new-starters.csv | ForEach-Object {
+    New-ADUser -Name $_.FullName `
+        -SamAccountName $_.Username `
+        -Path "OU=$($_.Department),OU=Users,DC=lab,DC=local" `
+        -AccountPassword (ConvertTo-SecureString $_.TempPassword -AsPlainText -Force) `
+        -Enabled $true -ChangePasswordAtLogon $true
+
+    Add-ADGroupMember -Identity $_.SecurityGroup -Members $_.Username
+}
+```
+
 ## Policy, DNS/DHCP, and recovery
 
 Group Policy objects cover drive mapping, password and account lockout policy, software restriction, and audit policy, each scoped to the OUs it's meant to govern. DNS and DHCP run alongside AD DS as they would in production, with scopes and zones kept in sync with the OU/department layout. System state backups are taken and authoritative/non-authoritative restore of AD is tested — a directory nobody can recover from is a liability.

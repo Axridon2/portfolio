@@ -4,6 +4,8 @@ import PrintButton from "@/components/PrintButton";
 
 export const metadata: Metadata = {
   title: "CV — Adnane Serroukh",
+  description:
+    "Printable CV for Adnane Serroukh — IT support specialist, London.",
 };
 
 export default function CvPage() {
