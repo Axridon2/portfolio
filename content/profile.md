@@ -6,7 +6,7 @@ address: "London SE16"
 email: "adnaneserroukh@outlook.com"
 phone: "07507 736 048"
 links:
-  github: "https://github.com/"
+  github: "https://github.com/Axridon2"
   linkedin: "https://www.linkedin.com/in/adnane-serroukh"
 languages:
   - "English (fluent)"
