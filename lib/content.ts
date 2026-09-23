@@ -104,3 +104,86 @@ export async function markdownToHtml(markdown: string): Promise<string> {
   const result = await remark().use(remarkHtml).process(markdown);
   return result.toString();
 }
+
+export type TocEntry = {
+  text: string;
+  slug: string;
+};
+
+export function extractToc(markdown: string): TocEntry[] {
+  const headingPattern = /^##\s+(.+)$/gm;
+  const entries: TocEntry[] = [];
+  let match: RegExpExecArray | null;
+  while ((match = headingPattern.exec(markdown)) !== null) {
+    const text = match[1].trim();
+    const slug = text
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, "")
+      .trim()
+      .replace(/\s+/g, "-");
+    entries.push({ text, slug });
+  }
+  return entries;
+}
+
+export type LabNoteFrontmatter = {
+  title: string;
+  summary: string;
+  tag: string;
+  order: number;
+};
+
+export type LabNote = LabNoteFrontmatter & {
+  slug: string;
+  body: string;
+};
+
+function readLabNoteFile(filename: string): LabNote {
+  const slug = filename.replace(/\.md$/, "");
+  const raw = fs.readFileSync(
+    path.join(contentDir, "lab-notes", filename),
+    "utf8",
+  );
+  const { data, content } = matter(raw);
+  return { ...(data as LabNoteFrontmatter), slug, body: content };
+}
+
+export function getAllLabNotes(): LabNote[] {
+  const dir = path.join(contentDir, "lab-notes");
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
+  return files.map(readLabNoteFile).sort((a, b) => a.order - b.order);
+}
+
+export function getLabNoteBySlug(slug: string): LabNote | undefined {
+  return getAllLabNotes().find((n) => n.slug === slug);
+}
+
+export type BlogFrontmatter = {
+  title: string;
+  summary: string;
+  date: string;
+};
+
+export type BlogPost = BlogFrontmatter & {
+  slug: string;
+  body: string;
+};
+
+function readBlogFile(filename: string): BlogPost {
+  const slug = filename.replace(/\.md$/, "");
+  const raw = fs.readFileSync(path.join(contentDir, "blog", filename), "utf8");
+  const { data, content } = matter(raw);
+  return { ...(data as BlogFrontmatter), slug, body: content };
+}
+
+export function getAllBlogPosts(): BlogPost[] {
+  const dir = path.join(contentDir, "blog");
+  const files = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
+  return files
+    .map(readBlogFile)
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export function getBlogPostBySlug(slug: string): BlogPost | undefined {
+  return getAllBlogPosts().find((p) => p.slug === slug);
+}

@@ -2,15 +2,15 @@
 name: "Adnane Serroukh"
 tagline: "IT & cyber security — systems that stay quiet"
 location: "London, UK"
-address: "3 Roberts Close, London, SE16 7FR"
+address: "London SE16"
 email: "adnaneserroukh@outlook.com"
-phone: "07507736048"
+phone: "07507 736 048"
 links:
   github: "https://github.com/"
-  linkedin: "https://linkedin.com/in/"
+  linkedin: "https://www.linkedin.com/in/adnane-serroukh"
 languages:
-  - "English"
-  - "Arabic"
+  - "English (fluent)"
+  - "Arabic (native)"
 about:
   - "IT professional with extensive experience providing technical support across diverse, fast-paced environments."
   - "At Janus Henderson Investors, honed expertise in Windows 10/11 administration, troubleshooting hardware and software, and supporting Bloomberg terminals and other critical investor applications — while contributing to IT projects that improved efficiency and user experience."
@@ -48,6 +48,17 @@ skills:
       - "IT project contribution"
       - "Working to SLAs under pressure"
 experience:
+  - role: "IT Support Analyst"
+    company: "Asta Managing Agent (contract via Devonshire Hayes)"
+    period: "Oct 2025 – Present"
+    location: "London"
+    summary: "IT support for a Lloyd's of London managing agent, providing first-line support across underwriting and claims teams alongside identity and endpoint administration."
+    highlights:
+      - "First-line support for underwriting, claims and operations staff in a Lloyd's managing agent environment"
+      - "Administer user access and devices across Active Directory, Entra ID and Intune"
+      - "Support Windows Autopilot enrolment and endpoint compliance for new and existing devices"
+      - "Log, triage and resolve incidents and service requests within SLA"
+      - "Work alongside the wider Devonshire Hayes contractor team on shared service desk processes"
   - role: "IT Specialist"
     company: "Janus Henderson Investors"
     period: "Sep 2024 – Sep 2025"

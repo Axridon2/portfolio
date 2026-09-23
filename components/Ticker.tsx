@@ -1,4 +1,4 @@
-const ITEMS = [
+const DEFAULT_ITEMS = [
   "IT SUPPORT",
   "M365",
   "INTUNE",
@@ -11,13 +11,13 @@ const ITEMS = [
   "LINUX",
 ];
 
-export default function Ticker() {
+export default function Ticker({ items = DEFAULT_ITEMS }: { items?: string[] }) {
   return (
     <div className="border-y border-line py-4 overflow-hidden edge-fade">
       <div className="flex w-max animate-marquee">
         {[0, 1].map((copy) => (
           <div key={copy} className="flex items-center shrink-0">
-            {ITEMS.map((item, i) => (
+            {items.map((item, i) => (
               <span
                 key={`${copy}-${i}`}
                 className="flex items-center font-mono text-xs uppercase tracking-[0.2em] text-fg-muted whitespace-nowrap"
