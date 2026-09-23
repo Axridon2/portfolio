@@ -140,7 +140,7 @@ export default function TerminalHero() {
             <span className="font-mono text-[11px] text-orange">✶</span>
           </div>
 
-          <div className="p-6 md:p-10 font-mono text-sm leading-relaxed min-h-[220px]">
+          <div className="p-6 md:p-10 font-mono text-sm leading-relaxed h-[300px] md:h-[320px]">
             <pre className="whitespace-pre-wrap mb-6 text-fg-muted">
               {formatLine(typing)}
               <span className="animate-blink text-fg">▌</span>
@@ -150,7 +150,7 @@ export default function TerminalHero() {
 
             <div
               aria-hidden
-              className="mt-6 text-[10px] leading-[1.15] text-fg-muted/50 select-none hidden sm:block"
+              className="mt-6 h-[3.4rem] overflow-hidden text-[10px] leading-[1.15] text-fg-muted/50 select-none hidden sm:block" style={{ whiteSpace: "nowrap" }}
             >
               {noise.map((row, i) => (
                 <div key={i}>{row}</div>

@@ -5,6 +5,7 @@ import RevealOnScroll from "@/components/RevealOnScroll";
 import CaseStudyCard from "@/components/CaseStudyCard";
 import TerminalHero from "@/components/TerminalHero";
 import Ticker from "@/components/Ticker";
+import ScrollDeploy from "@/components/ScrollDeploy";
 import FeaturePanel, { type Feature } from "@/components/FeaturePanel";
 import CtaBand from "@/components/CtaBand";
 
@@ -48,6 +49,8 @@ export default function Home() {
         </p>
       </div>
       <Ticker items={ENVIRONMENTS} />
+
+      <ScrollDeploy />
 
       {/* Feature panels */}
       <section className="border-b border-line bg-dot-grid">
