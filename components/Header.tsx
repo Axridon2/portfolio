@@ -65,7 +65,7 @@ export default function Header() {
           <NavDropdown label="Resources" items={RESOURCES_ITEMS} />
           <NavDropdown label="About" items={ABOUT_ITEMS} />
           <a
-            href="https://github.com/"
+            href="https://github.com/Axridon2"
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-[11px] uppercase tracking-[0.15em] text-fg-muted hover:text-fg transition-colors"
@@ -108,7 +108,7 @@ export default function Header() {
             </Link>
           ))}
           <a
-            href="https://github.com/"
+            href="https://github.com/Axridon2"
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-xs uppercase tracking-[0.15em] text-fg-muted hover:text-fg transition-colors"

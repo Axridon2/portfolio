@@ -77,7 +77,7 @@ export default function Footer({ location }: { location: string }) {
             <span>{location}</span>
             <span className="text-line">·</span>
             <a
-              href="https://github.com/"
+              href="https://github.com/Axridon2"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-fg transition-colors"
