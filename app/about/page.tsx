@@ -22,11 +22,11 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-[220px_1fr] gap-10 md:gap-16">
           <RevealOnScroll>
-            <div className="aspect-square border border-line flex items-center justify-center bg-raised">
-              <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg-muted text-center px-4">
-                Portrait — coming soon
-              </span>
+            <div className="aspect-square border border-line bg-raised overflow-hidden">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/portrait.png" alt="Adnane Serroukh — 16-bit pixel portrait" className="w-full h-full object-cover [image-rendering:pixelated]" />
             </div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-fg-muted mt-2">Adnane Serroukh — 16-bit</p>
           </RevealOnScroll>
 
           <div className="space-y-6">
